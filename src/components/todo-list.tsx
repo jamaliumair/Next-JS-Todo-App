@@ -16,21 +16,22 @@ export default function TodoList({
             {
                 todos.map((todo, index) => (
                     <div key={todo + index}>
-                        <p>{todo}
+                        <p>{todo}</p>
 
-                        <div>
-                        <button
+                        <div className="todo-btns">
+                        <button className="edit-btn"
                             onClick={() => {
                                 setEditIndex(index)
                             }}
 
                         >Edit</button>
 
-                        <button onClick={() => {
+                        <button className="delete-btn"
+                        onClick={() => {
                             deleteTodo(index)
                         }}>Delete</button>
                         </div>
-                        </p>
+                        
                     </div>
                 ))
             }
