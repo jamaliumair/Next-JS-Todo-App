@@ -11,16 +11,35 @@ export default function Home() {
     const [editIndex, setEditIndex] = useState(-1);
 
     const [errorMsg, setErrorMsg] = useState("")
+    let completedTodos: boolean[] = [];
 
     const addNewTodo = (newTodo: string) => {
         if (newTodo === "") {
             setErrorMsg("Please enter your todo");
-        }else {
+        } else {
+            completedTodos.push(false);
 
             console.log("New Todo:", newTodo);
             setTodos([...todos, newTodo]);
             setErrorMsg("")
         }
+    }
+
+    const completeTodo = (index: number, textClass: string, btnClass: string) => {
+        completedTodos[index] = !completedTodos[index]
+        let todoText = document.querySelector(`.${textClass}`) as HTMLElement | null;
+        let editBtn = document.querySelector(`#${btnClass}`) as HTMLElement | null;
+        
+        if (todoText && editBtn) {
+            if (completedTodos[index]) {
+                todoText.classList.add('completed');
+                editBtn.style.display = "none";
+            } else {
+                todoText.classList.remove('completed');
+                editBtn.style.display = "inline-block";
+            }
+        } 
+
     }
 
     const deleteTodo = (todoIndex: number) => {
@@ -60,6 +79,8 @@ export default function Home() {
 
             <TodoList
                 todos={todos}
+                completeTodo={completeTodo}
+                
                 deleteTodo={deleteTodo}
                 setEditIndex={setEditIndex}
             />

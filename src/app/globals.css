@@ -250,6 +250,11 @@ h1 {
   background-color: #bd2130;
   transform: translateY(0);
 }
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
 
 /* Responsive Design */
 @media (min-width: 768px) {
