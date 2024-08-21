@@ -3,10 +3,10 @@
 import React from "react";
 
 type TodoListType = {
-    todos: string[];
+    todos: {todo: string; isComplete: boolean}[];
     deleteTodo: (todoIndex: number) => void;
     setEditIndex: (todoIndex: number) => void;
-    completeTodo: (index: number, textClass: string, btnClass: string) => void
+    completeTodo: (index: number) => void
 }
 
 export default function TodoList({
@@ -20,9 +20,13 @@ export default function TodoList({
     return (
         <div className="todo-list">
             {
-                todos.map((todo, index) => (
+                todos.map(({todo}, index) => (
                     <div key={todo + index}>
-                        <p className={`todo${index}`}>{todo}</p>
+                        {
+                            todos[index].isComplete ?
+                            <p className="completed">{todo}</p>:
+                            <p>{todo}</p>
+                        }
 
                         <div className="todo-btns">
                         <button className="edit-btn" id={`mark-btn${index}`}
@@ -38,7 +42,7 @@ export default function TodoList({
                         }}>Delete</button>
                         <button
                         onClick={() => {
-                            completeTodo(index, `todo${index}`, `mark-btn${index}`)
+                            completeTodo(index)
                         }}>Mark as Completed</button>
                         </div>
                         
