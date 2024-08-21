@@ -204,11 +204,15 @@ h1 {
   border: 1px solid #e0e0e0;
 }
 
-.todo-list p {
+p {
   font-size: 16px;
   color: #333;
   flex: 1;
   margin: 0;
+}
+
+.errorp {
+  margin-bottom: 10px;
 }
 
 .todo-list button {

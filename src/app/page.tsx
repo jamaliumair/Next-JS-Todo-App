@@ -12,11 +12,12 @@ export default function Home() {
     const [editIndex, setEditIndex] = useState(-1);
 
     const [errorMsg, setErrorMsg] = useState("")
-    // let completedTodos: boolean[] = [];
+    const [checkState, setCheckState] = useState(false)
+
 
     const addNewTodo = (newTodo: string) => {
         if (newTodo === "") {
-            setErrorMsg("Please enter your todo");
+            setErrorMsg("Please Enter Your Todo");
         } else {
             // completedTodos.push(false);
 
@@ -45,6 +46,7 @@ export default function Home() {
         todosClone.splice(editIndex, 1, {todo: updatedTodo, isComplete: false});
         setTodos([...todosClone]);
         setEditIndex(-1);
+        setCheckState(false)
     }
 
 
@@ -71,9 +73,11 @@ export default function Home() {
             <TodoList
                 todos={todos}
                 completeTodo={completeTodo}
-                
+                editIndex={editIndex}
                 deleteTodo={deleteTodo}
                 setEditIndex={setEditIndex}
+                setCheckState={setCheckState}
+                checkState={checkState}
             />
         </div>
     )

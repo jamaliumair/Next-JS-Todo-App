@@ -5,11 +5,12 @@ import { useState } from "react";
 type TodoEditType = {
     editedTodo: {todo: string; isComplete: boolean};
     saveEditedTodo: (updatedTodo: string) => void;
+    
 }
 
 export default function TodoEdit({
     editedTodo,
-    saveEditedTodo
+    saveEditedTodo,
 }: TodoEditType) {
 
     const [editTodo, setEditTodo] = useState(editedTodo.todo);

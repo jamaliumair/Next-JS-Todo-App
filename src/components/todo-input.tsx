@@ -33,7 +33,7 @@ export default function TodoInput({
                 }}
             >Add Todo</button>
             </div>
-            <p>{errorMsg}</p>
+            <p className="errorp">{errorMsg}</p>
         </>
     )
 }
